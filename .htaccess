@@ -1,0 +1,12 @@
+Options -MultiViews
+Options -Indexes
+
+RewriteEngine On
+
+# A way to make RewriteBase use the current directory.
+# See http://stackoverflow.com/a/21063276
+RewriteCond %{REQUEST_URI}::$1 ^(.*?)/(.*)::\2$
+RewriteRule ^(.*)$ - [E=BASE:%1]
+
+RewriteCond %{REQUEST_FILENAME} !(index\.php)
+RewriteRule ^(.+)$ %{ENV:BASE}/index.php?__redir__=$1 [QSA]

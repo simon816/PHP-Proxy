@@ -36,7 +36,7 @@ class HTMLResponseHandler implements ResponseHandler
         }
         $html = $document->saveHTML();
         if ($html == false) {
-            throw new Exception("Unable to save HTML");
+            throw new \Exception("Unable to save HTML");
         }
         $resp->setBody($html);
     }
